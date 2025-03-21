@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATRICK'S FITNESS - Transform Your Body, Transform Your Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00c2ff',
+                        'primary-dark': '#0099cc',
+                        secondary: '#ff3e6c',
+                        accent: '#6e42ff',
+                        'accent-dark': '#5a35d0',
+                        dark: '#111111',
+                        darker: '#0a0a0a',
+                        light: '#f8f9fa',
+                        gray: {
+                            DEFAULT: '#333333',
+                            light: '#444444',
+                            lighter: '#aaaaaa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px rgba(0, 0, 0, 0.2)',
+                        'subtle': '0 4px 6px rgba(0, 0, 0, 0.1)',
+                        'button': '0 4px 10px rgba(0, 194, 255, 0.3)'
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        bounce: {
+                            '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0) translateX(-50%)' },
+                            '40%': { transform: 'translateY(-20px) translateX(-50%)' },
+                            '60%': { transform: 'translateY(-10px) translateX(-50%)' }
+                        },
+                        rotateY: {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(360deg)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        scaleUp: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        floatAnimation: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        }
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 1s ease',
+                        'fade-in-up': 'fadeInUp 1s ease',
+                        'fade-in': 'fadeIn 1.5s ease',
+                        'bounce': 'bounce 2s infinite',
+                        'rotate-y': 'rotateY 1s ease',
+                        'fade-in-left': 'fadeInLeft 1s ease',
+                        'fade-in-right': 'fadeInRight 1s ease',
+                        'scale-up': 'scaleUp 0.8s ease',
+                        'float': 'floatAnimation 3s ease-in-out infinite',
+                        'pulse': 'pulse 2s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite'
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #00c2ff 0%, #6e42ff 100%)',
+                        'gradient-primary-hover': 'linear-gradient(135deg, #6e42ff 0%, #00c2ff 100%)',
+                        'gradient-shimmer': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
+        }
+        
+        .bg-gradient-radial { background-image: radial-gradient(circle at center, rgba(0, 194, 255, 0.15) 0%, rgba(10, 10, 10, 0.95) 70%); }
+        .bg-gradient-radial-primary { background-image: radial-gradient(circle, #00c2ff 0%, rgba(0, 194, 255, 0) 70%); }
+        .bg-gradient-to-top { background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); }
+        .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        
+        /* Progress bar styles */
+        .progress-container {
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+        
+        .progress-bar {
+            height: 3px;
+            background: linear-gradient(to right, #00c2ff, #6e42ff);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        /* Scroll animations */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1);
+            will-change: transform, opacity;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+        }
+        
+        .reveal.fade-bottom {
+            transform: translateY(80px);
+        }
+        
+        .reveal.fade-bottom.active {
+            transform: translateY(0);
+        }
+        
+        .reveal.fade-left {
+            transform: translateX(-100px);
+        }
+        
+        .reveal.fade-left.active {
+            transform: translateX(0);
+        }
+        
+        .reveal.fade-right {
+            transform: translateX(100px);
+        }
+        
+        .reveal.fade-right.active {
+            transform: translateX(0);
+        }
+        
+        .reveal.zoom {
+            transform: scale(0.8);
+        }
+        
+        .reveal.zoom.active {
+            transform: scale(1);
+        }
+        
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: background-position 0.1s ease-out;
+            will-change: background-position;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .scroll-indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 6px 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            position: relative;
+        }
+        
+        .scroll-indicator-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: transparent;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .scroll-indicator-dot.active {
+            background-color: #00c2ff;
+            transform: scale(1.3);
+        }
+        
+        .scroll-indicator-dot.active::before {
+            opacity: 0.3;
+            background-color: #00c2ff;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Shimmer effect */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-light bg-dark overflow-x-hidden">
+    <!-- Scroll Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator hidden md:flex" id="scrollIndicator">
+        <a href="#hero" class="scroll-indicator-dot active" data-section="hero"></a>
+        <a href="#features" class="scroll-indicator-dot" data-section="features"></a>
+        <a href="#about" class="scroll-indicator-dot" data-section="about"></a>
+        <a href="#trainers" class="scroll-indicator-dot" data-section="trainers"></a>
+        <a href="#pricing" class="scroll-indicator-dot" data-section="pricing"></a>
+        <a href="#contact" class="scroll-indicator-dot" data-section="contact"></a>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 w-full z-50 bg-darker/95 text-white py-5 transition-all duration-400 ease-in-out backdrop-blur-md border-b border-white/5">
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 flex justify-between items-center">
+            <div class="flex items-center font-orbitron text-xl font-bold tracking-wide">
+                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center mr-2.5">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <a href="#hero" class="smooth-scroll">PATRICK'S<span class="text-primary ml-1">FITNESS</span></a>
+            </div>
+            <div id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-white/5 flex items-center justify-center cursor-pointer z-[1001] transition-all duration-300 hover:bg-white/10">
+                <i class="fas fa-bars text-xl"></i>
+            </div>
+            <ul id="nav-menu" class="hidden lg:flex absolute lg:static top-0 right-[-100%] bg-darker/98 lg:bg-transparent w-4/5 lg:w-auto h-screen lg:h-auto flex-col lg:flex-row justify-center lg:justify-start items-center lg:items-center p-12 lg:p-0 transition-all duration-400 backdrop-blur-md lg:backdrop-blur-none">
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#hero" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                </li>
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#about" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">About</a>
+                </li>
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#features" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">Services</a>
+                </li>
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#trainers" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">Trainers</a>
+                </li>
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#pricing" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">Pricing</a>
+                </li>
+                <li class="my-5 lg:my-0 lg:ml-10 relative">
+                    <a href="#contact" class="smooth-scroll font-medium text-sm uppercase tracking-wide py-1.5 transition-colors duration-300 hover:text-primary relative after:absolute after:w-0 after:h-0.5 after:bg-gradient-primary after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center overflow-hidden bg-cover bg-center bg-no-repeat parallax" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+        <div class="absolute inset-0 bg-gradient-radial"></div>
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="max-w-[800px] mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-[4.5rem] font-extrabold mb-8 leading-tight uppercase animate-fade-in-down text-shadow shadow-black/50">
+                    TRANSFORM YOUR <span class="text-primary relative inline-block after:content-[''] after:absolute after:w-full after:h-2.5 after:bg-gradient-primary after:bottom-[-5px] after:left-0 after:rounded-md after:opacity-50 after:animate-pulse">BODY</span><br>
+                    TRANSFORM YOUR <span class="text-primary relative inline-block after:content-[''] after:absolute after:w-full after:h-2.5 after:bg-gradient-primary after:bottom-[-5px] after:left-0 after:rounded-md after:opacity-50 after:animate-pulse">LIFE</span>
+                </h1>
+                <p class="text-base md:text-lg lg:text-xl mb-10 max-w-[700px] mx-auto text-[#ddd] animate-fade-in-up">
+                    Join PATRICK'S FITNESS today and start your journey to a healthier, stronger, and more confident you. Our expert trainers and state-of-the-art facilities are here to help you achieve your fitness goals.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5 animate-fade-in">
+                    <a href="#pricing" class="smooth-scroll inline-block py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">Join Now</a>
+                    <a href="#about" class="smooth-scroll inline-block py-4 px-9 bg-transparent border-2 border-primary text-primary font-semibold uppercase rounded-full transition-all duration-300 hover:bg-primary hover:text-white">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-down" class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-10">
+            <i class="fas fa-chevron-down text-primary text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 md:py-32 bg-darker relative overflow-hidden">
+        <div class="absolute w-[300px] h-[300px] bg-gradient-radial-primary top-[-150px] right-[-150px] opacity-10 rounded-full animate-float"></div>
+        <div class="absolute w-[400px] h-[400px] bg-gradient-radial-primary bottom-[-200px] left-[-200px] opacity-10 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    Our Services
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    We offer a wide range of premium services to help you achieve your fitness goals, no matter what they are.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service Card 1 -->
+                <div class="reveal fade-left bg-gradient-to-br from-[#151515] to-[#1a1a1a] p-12 rounded-3xl shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative overflow-hidden border border-white/5 before:absolute before:w-full before:h-1.5 before:bg-gradient-primary before:top-0 before:left-0 before:transition-all before:duration-300">
+                    <div class="w-[90px] h-[90px] bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-300">
+                        <i class="fas fa-dumbbell text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-5 text-white">Personal Training</h3>
+                    <p class="text-gray-lighter mb-6">
+                        Our certified personal trainers will create a customized workout plan tailored to your specific goals and needs, ensuring maximum results in minimum time.
+                    </p>
+                    <a href="#contact" class="smooth-scroll text-primary font-semibold inline-flex items-center transition-all duration-300 hover:text-white group">
+                        Learn More <i class="fas fa-arrow-right ml-1.5 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="reveal fade-bottom bg-gradient-to-br from-[#151515] to-[#1a1a1a] p-12 rounded-3xl shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative overflow-hidden border border-white/5 before:absolute before:w-full before:h-1.5 before:bg-gradient-primary before:top-0 before:left-0 before:transition-all before:duration-300">
+                    <div class="w-[90px] h-[90px] bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-300">
+                        <i class="fas fa-users text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-5 text-white">Group Classes</h3>
+                    <p class="text-gray-lighter mb-6">
+                        Join our energetic group classes including HIIT, Yoga, Zumba, Spinning, and more for a fun and motivating workout experience with like-minded individuals.
+                    </p>
+                    <a href="#contact" class="smooth-scroll text-primary font-semibold inline-flex items-center transition-all duration-300 hover:text-white group">
+                        Learn More <i class="fas fa-arrow-right ml-1.5 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="reveal fade-right bg-gradient-to-br from-[#151515] to-[#1a1a1a] p-12 rounded-3xl shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative overflow-hidden border border-white/5 before:absolute before:w-full before:h-1.5 before:bg-gradient-primary before:top-0 before:left-0 before:transition-all before:duration-300">
+                    <div class="w-[90px] h-[90px] bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-300">
+                        <i class="fas fa-apple-alt text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-5 text-white">Nutrition Planning</h3>
+                    <p class="text-gray-lighter mb-6">
+                        Get expert advice on nutrition and diet planning to complement your workout routine and maximize your results with personalized meal plans.
+                    </p>
+                    <a href="#contact" class="smooth-scroll text-primary font-semibold inline-flex items-center transition-all duration-300 hover:text-white group">
+                        Learn More <i class="fas fa-arrow-right ml-1.5 transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 bg-dark relative overflow-hidden">
+        <div class="absolute w-[500px] h-[500px] bg-gradient-radial-primary top-1/2 right-[-250px] transform -translate-y-1/2 opacity-5 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="order-2 lg:order-1 reveal fade-right">
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-8 uppercase relative pb-5 text-white after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        About PATRICK'S FITNESS
+                    </h2>
+                    <p class="text-gray-lighter mb-6 text-lg">
+                        PATRICK'S FITNESS was founded in 2024 with a mission to provide a welcoming and motivating environment for people of all fitness levels. We believe that fitness is not just about looking good, but feeling good and living a healthier life.
+                    </p>
+                    <p class="text-gray-lighter mb-6 text-lg">
+                        Our state-of-the-art facilities are equipped with the latest fitness equipment, and our team of certified trainers are dedicated to helping you achieve your fitness goals, whether it's losing weight, building muscle, or improving your overall health.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-10">
+                        <div class="text-center reveal zoom" data-delay="200">
+                            <div class="text-4xl font-extrabold mb-2.5 bg-gradient-primary text-gradient">10+</div>
+                            <div class="text-gray-lighter text-sm uppercase tracking-wide">Years Experience</div>
+                        </div>
+                        <div class="text-center reveal zoom" data-delay="400">
+                            <div class="text-4xl font-extrabold mb-2.5 bg-gradient-primary text-gradient">15k+</div>
+                            <div class="text-gray-lighter text-sm uppercase tracking-wide">Happy Members</div>
+                        </div>
+                        <div class="text-center reveal zoom" data-delay="600">
+                            <div class="text-4xl font-extrabold mb-2.5 bg-gradient-primary text-gradient">30+</div>
+                            <div class="text-gray-lighter text-sm uppercase tracking-wide">Expert Trainers</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="smooth-scroll inline-block py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">
+                        Join Our Community
+                    </a>
+                </div>
+                
+                <div class="order-1 lg:order-2 relative rounded-3xl overflow-hidden shadow-card reveal fade-left">
+                    <div class="absolute inset-0 bg-gradient-to-top z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gym Interior" class="w-full h-full object-cover transition-transform duration-500 scale-105 hover:scale-100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="py-24 md:py-32 bg-darker relative overflow-hidden">
+        <div class="absolute w-[400px] h-[400px] bg-gradient-radial-primary bottom-[-200px] right-[-200px] opacity-10 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    Our Expert Trainers
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    Meet our team of certified fitness professionals who are dedicated to helping you achieve your goals.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Trainer Card 1 -->
+                <div class="reveal fade-left bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 border border-white/5">
+                    <div class="h-[350px] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-top z-10"></div>
+                        <img src="484478204_1321973602399255_8388333955417178615_n.jpg" alt="Trainer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 text-center relative before:content-[''] before:absolute before:w-[50px] before:h-[3px] before:bg-gradient-primary before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md">
+                        <h3 class="text-2xl font-bold mb-2.5 text-white">John Patrick</h3>
+                        <span class="text-primary font-semibold block mb-5">Strength & Conditioning</span>
+                        <p class="text-gray-lighter mb-5 text-base">
+                            John Patrick specializes in strength training and has helped hundreds of clients achieve their muscle building and toning goals.
+                        </p>
+                        <div class="flex justify-center gap-4">
+                            <a href="https://www.facebook.com/profile.php?id=100071649355932" target="_blank" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/patskiee25/" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trainer Card 2 -->
+                <div class="reveal fade-bottom bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 border border-white/5">
+                    <div class="h-[350px] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-top z-10"></div>
+                        <img src="c837fa82-25c5-42d5-ae54-f71b208cd562.jpg" alt="Trainer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 text-center relative before:content-[''] before:absolute before:w-[50px] before:h-[3px] before:bg-gradient-primary before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md">
+                        <h3 class="text-2xl font-bold mb-2.5 text-white">Michelle Agbayani</h3>
+                        <span class="text-primary font-semibold block mb-5">Yoga & Pilates</span>
+                        <p class="text-gray-lighter mb-5 text-base">
+                            Michelle is our yoga and pilates expert with over 8 years of experience helping clients improve flexibility and mindfulness.
+                        </p>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trainer Card 3 -->
+                <div class="reveal fade-right bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 border border-white/5">
+                    <div class="h-[350px] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-top z-10"></div>
+                        <img src="484478204_1321973602399255_8388333955417178615_n.jpg" alt="Trainer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 text-center relative before:content-[''] before:absolute before:w-[50px] before:h-[3px] before:bg-gradient-primary before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:rounded-md">
+                        <h3 class="text-2xl font-bold mb-2.5 text-white">John Patrick</h3>
+                        <span class="text-primary font-semibold block mb-5">Cardio & HIIT</span>
+                        <p class="text-gray-lighter mb-5 text-base">
+                          John Patrick specializes in high-intensity interval training and cardio workouts that maximize calorie burn and improve endurance.
+                        </p>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 md:py-32 bg-dark relative overflow-hidden">
+        <div class="absolute w-[500px] h-[500px] bg-gradient-radial-primary top-[-250px] left-[-250px] opacity-5 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    Membership Plans
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    Choose the membership plan that best fits your needs and budget.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Basic Plan -->
+                <div class="reveal fade-left bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative border border-white/5">
+                    <div class="bg-gray relative overflow-hidden py-8 px-5">
+                        <div class="absolute inset-0 w-[150%] h-full bg-gradient-primary opacity-0 transition-opacity duration-300 transform -skew-x-30 -left-[25%] group-hover:opacity-100"></div>
+                        <h3 class="text-2xl font-bold mb-4 relative z-10">Basic</h3>
+                        <div class="text-5xl font-extrabold relative z-10">$39<span class="text-lg font-normal opacity-80">/month</span></div>
+                    </div>
+                    <div class="p-10">
+                        <ul class="mb-10 text-left">
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Access to gym floor</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Basic equipment usage</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Locker room access</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">2 Group classes per week</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Fitness assessment</li>
+                        </ul>
+                        <a href="#contact" class="smooth-scroll inline-block w-full py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="reveal fade-bottom bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative border border-white/5 border-primary/30">
+                    <div class="absolute top-[30px] right-[-35px] bg-secondary text-white py-2 px-10 transform rotate-45 text-xs font-bold z-10 tracking-wide">POPULAR</div>
+                    <div class="bg-gray relative overflow-hidden py-8 px-5">
+                        <div class="absolute inset-0 w-[150%] h-full bg-gradient-primary opacity-0 transition-opacity duration-300 transform -skew-x-30 -left-[25%] group-hover:opacity-100"></div>
+                        <h3 class="text-2xl font-bold mb-4 relative z-10">Premium</h3>
+                        <div class="text-5xl font-extrabold relative z-10">$69<span class="text-lg font-normal opacity-80">/month</span></div>
+                    </div>
+                    <div class="p-10">
+                        <ul class="mb-10 text-left">
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Full gym access</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">All equipment usage</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Unlimited group classes</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">2 Personal training sessions</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Nutrition consultation</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Access to sauna & spa</li>
+                        </ul>
+                        <a href="#contact" class="smooth-scroll inline-block w-full py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Elite Plan -->
+                <div class="reveal fade-right bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl overflow-hidden shadow-card text-center transition-all duration-500 hover:-translate-y-4 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/30 relative border border-white/5">
+                    <div class="bg-gray relative overflow-hidden py-8 px-5">
+                        <div class="absolute inset-0 w-[150%] h-full bg-gradient-primary opacity-0 transition-opacity duration-300 transform -skew-x-30 -left-[25%] group-hover:opacity-100"></div>
+                        <h3 class="text-2xl font-bold mb-4 relative z-10">Elite</h3>
+                        <div class="text-5xl font-extrabold relative z-10">$99<span class="text-lg font-normal opacity-80">/month</span></div>
+                    </div>
+                    <div class="p-10">
+                        <ul class="mb-10 text-left">
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">24/7 gym access</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">All premium features</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">6 Personal training sessions</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Custom nutrition plan</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Progress tracking</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Exclusive member events</li>
+                            <li class="mb-4 pl-8 text-gray-lighter relative before:content-['\f00c'] before:font-['Font_Awesome_6_Free'] before:font-bold before:text-primary before:absolute before:left-0">Guest passes</li>
+                        </ul>
+                        <a href="#contact" class="smooth-scroll inline-block w-full py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 md:py-32 bg-darker relative overflow-hidden">
+        <div class="absolute w-[400px] h-[400px] bg-gradient-radial-primary top-[-200px] right-[-200px] opacity-10 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    What Our Members Say
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    Don't just take our word for it. Hear from our satisfied members.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div id="testimonial-slider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide gap-8 py-5 px-1">
+                    <!-- Testimonial 1 -->
+                    <div class="flex-none w-full snap-start bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl p-10 shadow-card border border-white/5 flex flex-col reveal fade-right">
+                        <div class="relative pl-10 mb-8">
+                            <span class="absolute left-0 top-0 text-2xl text-primary"><i class="fas fa-quote-left"></i></span>
+                            <p class="text-gray-lighter text-lg leading-relaxed">
+                                "PATRICK'S FITNESS has completely transformed my fitness journey. The trainers are knowledgeable and supportive, and the community keeps me motivated. I've never felt stronger or more confident!"
+                            </p>
+                        </div>
+                        <div class="flex items-center mt-auto">
+                            <div class="w-[70px] h-[70px] rounded-full overflow-hidden mr-5 border-3 border-primary">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Testimonial Author" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Jessica Parker</h4>
+                                <span class="text-primary text-sm">Member for 2 years</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="flex-none w-full snap-start bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl p-10 shadow-card border border-white/5 flex flex-col reveal fade-bottom">
+                        <div class="relative pl-10 mb-8">
+                            <span class="absolute left-0 top-0 text-2xl text-primary"><i class="fas fa-quote-left"></i></span>
+                            <p class="text-gray-lighter text-lg leading-relaxed">
+                                "The 24/7 access is perfect for my busy schedule. I can work out whenever it fits into my day, and the equipment is always well-maintained. The trainers are exceptional and the atmosphere is motivating!"
+                            </p>
+                        </div>
+                        <div class="flex items-center mt-auto">
+                            <div class="w-[70px] h-[70px] rounded-full overflow-hidden mr-5 border-3 border-primary">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Testimonial Author" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Michael Chen</h4>
+                                <span class="text-primary text-sm">Member for 1 year</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="flex-none w-full snap-start bg-gradient-to-br from-[#151515] to-[#1a1a1a] rounded-3xl p-10 shadow-card border border-white/5 flex flex-col reveal fade-left">
+                        <div class="relative pl-10 mb-8">
+                            <span class="absolute left-0 top-0 text-2xl text-primary"><i class="fas fa-quote-left"></i></span>
+                            <p class="text-gray-lighter text-lg leading-relaxed">
+                                "The group classes at PATRICK'S FITNESS are incredible! The instructors are passionate and make every session challenging yet fun. I've made great friends and achieved fitness goals I never thought possible."
+                            </p>
+                        </div>
+                        <div class="flex items-center mt-auto">
+                            <div class="w-[70px] h-[70px] rounded-full overflow-hidden mr-5 border-3 border-primary">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Testimonial Author" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Amanda Rodriguez</h4>
+                                <span class="text-primary text-sm">Member for 6 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="slider-nav" class="flex justify-center gap-4 mt-10">
+                    <div class="slider-dot w-3 h-3 rounded-full bg-white/20 cursor-pointer transition-all duration-300 active" data-slide="0"></div>
+                    <div class="slider-dot w-3 h-3 rounded-full bg-white/20 cursor-pointer transition-all duration-300" data-slide="1"></div>
+                    <div class="slider-dot w-3 h-3 rounded-full bg-white/20 cursor-pointer transition-all duration-300" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility Section -->
+    <section class="py-24 md:py-32 pb-0 bg-dark relative overflow-hidden">
+        <div class="absolute w-[500px] h-[500px] bg-gradient-radial-primary bottom-[-250px] left-[-250px] opacity-5 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10 mb-16">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    Our Facility
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    Take a look at our state-of-the-art facilities and equipment.
+                </p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-4 relative z-10">
+            <!-- Facility Image 1 -->
+            <div class="lg:col-span-2 lg:row-span-2 relative overflow-hidden rounded-xl cursor-pointer group reveal zoom">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gym Interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Main Workout Area</h4>
+                    <p class="text-primary text-sm">State-of-the-art equipment</p>
+                </div>
+            </div>
+            
+            <!-- Facility Image 2 -->
+            <div class="relative overflow-hidden rounded-xl cursor-pointer group reveal fade-left">
+                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cardio Area" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Cardio Zone</h4>
+                    <p class="text-primary text-sm">Latest cardio machines</p>
+                </div>
+            </div>
+            
+            <!-- Facility Image 3 -->
+            <div class="relative overflow-hidden rounded-xl cursor-pointer group reveal fade-left">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Weight Area" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Free Weights</h4>
+                    <p class="text-primary text-sm">Premium weight equipment</p>
+                </div>
+            </div>
+            
+            <!-- Facility Image 4 -->
+            <div class="md:col-span-2 lg:col-span-1 relative overflow-hidden rounded-xl cursor-pointer group reveal fade-right">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Yoga Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Yoga Studio</h4>
+                    <p class="text-primary text-sm">Peaceful environment</p>
+                </div>
+            </div>
+            
+            <!-- Facility Image 5 -->
+            <div class="relative overflow-hidden rounded-xl cursor-pointer group reveal fade-right">
+                <img src="https://images.unsplash.com/photo-1570829460005-c840387bb1ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Locker Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Luxury Locker Rooms</h4>
+                    <p class="text-primary text-sm">Modern amenities</p>
+                </div>
+            </div>
+            
+            <!-- Facility Image 6 -->
+            <div class="relative overflow-hidden rounded-xl cursor-pointer group reveal fade-bottom">
+                <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Protein Bar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-top opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"></div>
+                <div class="absolute bottom-8 left-8 z-20 opacity-0 transform translate-y-5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <h4 class="text-2xl font-bold text-white mb-2">Nutrition Bar</h4>
+                    <p class="text-primary text-sm">Healthy refreshments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 bg-darker relative overflow-hidden">
+        <div class="absolute w-[400px] h-[400px] bg-gradient-radial-primary top-[-200px] left-[-200px] opacity-10 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-bottom">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 uppercase inline-block bg-gradient-primary text-gradient relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-gradient-primary after:bottom-[-15px] after:left-1/2 after:transform after:-translate-x-1/2 after:rounded-md">
+                    Contact Us
+                </h2>
+                <p class="text-gray-lighter max-w-[700px] mx-auto mt-5 text-lg">
+                    Have questions or ready to start your fitness journey? Get in touch with us today!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <div class="reveal fade-right">
+                    <h3 class="text-3xl font-bold mb-8 text-white relative pb-4 after:content-[''] after:absolute after:w-[60px] after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        Get In Touch
+                    </h3>
+                    <div class="mb-10">
+                        <div class="flex items-center mb-6">
+                            <div class="w-[50px] h-[50px] bg-gradient-to-br from-[#151515] to-[#1a1a1a] text-primary rounded-full flex justify-center items-center mr-5 shadow-md transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:rotate-y-180">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p class="text-gray-lighter">Brgy 61 Cataban Laoag City, Sitio Centro</p>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-[50px] h-[50px] bg-gradient-to-br from-[#151515] to-[#1a1a1a] text-primary rounded-full flex justify-center items-center mr-5 shadow-md transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:rotate-y-180">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <p class="text-gray-lighter">+63 (09708498543) </p>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-[50px] h-[50px] bg-gradient-to-br from-[#151515] to-[#1a1a1a] text-primary rounded-full flex justify-center items-center mr-5 shadow-md transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:rotate-y-180">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p class="text-gray-lighter">johnpatrickmanuel26@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-3xl font-bold mb-8 text-white relative pb-4 after:content-[''] after:absolute after:w-[60px] after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        Opening Hours
+                    </h3>
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-[50px] h-[50px] bg-gradient-to-br from-[#151515] to-[#1a1a1a] text-primary rounded-full flex justify-center items-center mr-5 shadow-md transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:rotate-y-180">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <p class="text-gray-lighter"><strong>Monday - Friday:</strong> 5:00 AM - 11:00 PM</p>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-[50px] h-[50px] bg-gradient-to-br from-[#151515] to-[#1a1a1a] text-primary rounded-full flex justify-center items-center mr-5 shadow-md transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:rotate-y-180">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <p class="text-gray-lighter"><strong>Saturday - Sunday:</strong> 7:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-[#151515] to-[#1a1a1a] p-10 rounded-3xl shadow-card border border-white/5 reveal fade-left">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" id="name" required class="w-full py-4 px-5 mb-6 bg-white/5 border border-white/10 rounded-xl text-white transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white/8">
+                        
+                        <input type="email" placeholder="Your Email" id="email" required class="w-full py-4 px-5 mb-6 bg-white/5 border border-white/10 rounded-xl text-white transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white/8">
+                        
+                        <input type="text" placeholder="Subject" id="subject" required class="w-full py-4 px-5 mb-6 bg-white/5 border border-white/10 rounded-xl text-white transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white/8">
+                        
+                        <textarea placeholder="Your Message" id="message" required class="w-full h-[150px] py-4 px-5 mb-6 bg-white/5 border border-white/10 rounded-xl text-white resize-none transition-all duration-300 focus:outline-none focus:border-primary focus:bg-white/8"></textarea>
+                        
+                        <button type="submit" class="w-full py-4 px-9 bg-gradient-primary text-white font-semibold uppercase rounded-full shadow-button transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-gradient-primary-hover before:transition-all before:duration-300 before:z-[-1] hover:before:w-full shimmer">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-20 pb-5 bg-darker relative overflow-hidden">
+        <div class="absolute w-[300px] h-[300px] bg-gradient-radial-primary bottom-[-150px] right-[-150px] opacity-10 rounded-full animate-float"></div>
+        
+        <div class="container mx-auto w-[90%] max-w-[1400px] px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="reveal fade-right">
+                    <h4 class="text-xl font-bold mb-6 text-white relative pb-4 after:content-[''] after:absolute after:w-10 after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        PATRICK'S FITNESS
+                    </h4>
+                    <p class="text-gray-lighter mb-5 leading-relaxed">
+                        Transform your body, transform your life with our expert trainers and state-of-the-art facilities. Join our community today and start your fitness journey.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex justify-center items-center transition-all duration-300 hover:bg-gradient-primary hover:text-white hover:-translate-y-1.5 text-gray-lighter">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="reveal fade-bottom" data-delay="200">
+                    <h4 class="text-xl font-bold mb-6 text-white relative pb-4 after:content-[''] after:absolute after:w-10 after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        Quick Links
+                    </h4>
+                    <ul>
+                        <li class="mb-4">
+                            <a href="#hero" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Home
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#about" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> About
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Services
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#trainers" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Trainers
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#pricing" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Pricing
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reveal fade-bottom" data-delay="400">
+                    <h4 class="text-xl font-bold mb-6 text-white relative pb-4 after:content-[''] after:absolute after:w-10 after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        Services
+                    </h4>
+                    <ul>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Personal Training
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Group Classes
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Nutrition Planning
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Fitness Assessment
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#features" class="smooth-scroll text-gray-lighter flex items-center transition-all duration-300 hover:text-white hover:pl-1.5 group">
+                                <i class="fas fa-chevron-right text-primary mr-2.5 transition-transform duration-300 group-hover:translate-x-1.5"></i> Weight Loss Programs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reveal fade-left">
+                    <h4 class="text-xl font-bold mb-6 text-white relative pb-4 after:content-[''] after:absolute after:w-10 after:h-[3px] after:bg-gradient-primary after:bottom-0 after:left-0 after:rounded-md">
+                        Newsletter
+                    </h4>
+                    <p class="text-gray-lighter mb-5">
+                        Subscribe to our newsletter for the latest updates and special offers.
+                    </p>
+                    <form id="newsletterForm" class="flex mb-5">
+                        <input type="email" placeholder="Your Email" required class="flex-1 py-3 px-4 bg-white/5 border border-white/10 rounded-l-full text-white focus:outline-none focus:border-primary">
+                        <button type="submit" class="bg-gradient-primary text-white border-0 px-6 rounded-r-full cursor-pointer transition-all duration-300 hover:opacity-90">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p class="text-gray-lighter text-sm">
+                        We respect your privacy and will never share your information.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8 border-t border-white/5 text-gray-lighter">
+                <p>&copy; 2025 PATRICK'S FITNESS. All Rights Reserved. | Designed with <i class="fas fa-heart text-primary animate-pulse"></i> for fitness enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+            mobileToggle.innerHTML = navMenu.classList.contains('hidden') ? 
+                '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+
+        // Enhanced Smooth Scrolling
+        document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (!navMenu.classList.contains('hidden') && window.innerWidth < 1024) {
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('flex');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    // Enhanced smooth scrolling with cubic-bezier easing
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+
+        // Enhanced Scroll Progress Bar
+        window.onscroll = function() {
+            // Progress bar with smoother updates
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+            
+            // Header Scroll Effect with enhanced transitions
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-3');
+                header.classList.add('shadow-lg');
+                header.classList.add('bg-darker/98');
+            } else {
+                header.classList.remove('py-3');
+                header.classList.remove('shadow-lg');
+                header.classList.remove('bg-darker/98');
+            }
+            
+            // Enhanced Scroll Reveal Animation
+            revealElements();
+            
+            // Enhanced scroll indicator updates
+            updateScrollIndicator();
+            
+            // Parallax effect for hero section
+            updateParallax();
+        };
+
+        // Enhanced Scroll Reveal Animation with better timing
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100; // Reveal earlier for smoother appearance
+                const delay = element.getAttribute('data-delay') || 0;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('active');
+                    }, delay);
+                }
+            });
+        }
+        
+        // Initialize reveal on page load
+        window.addEventListener('DOMContentLoaded', revealElements);
+
+        // Enhanced Testimonial Slider with smoother transitions
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        const slider = document.getElementById('testimonial-slider');
+        
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                // Remove active class from current active dot
+                document.querySelector('.slider-dot.active').classList.remove('active');
+                document.querySelector('.slider-dot.active').classList.remove('bg-primary');
+                document.querySelector('.slider-dot.active').classList.remove('scale-125');
+                document.querySelector('.slider-dot.active').classList.add('bg-white/20');
+                
+                dot.classList.add('active');
+                dot.classList.add('bg-primary');
+                dot.classList.add('scale-125');
+                dot.classList.remove('bg-white/20');
+                
+                // Scroll to the selected slide with enhanced smooth scrolling
+                const slideWidth = slider.querySelector('.flex-none').offsetWidth;
+                slider.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Auto slide testimonials with improved timing
+        let currentSlide = 0;
+        const totalSlides = sliderDots.length;
+        
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            
+            // Update active dot with enhanced transitions
+            document.querySelector('.slider-dot.active').classList.remove('active');
+            document.querySelector('.slider-dot.active').classList.remove('bg-primary');
+            document.querySelector('.slider-dot.active').classList.remove('scale-125');
+            document.querySelector('.slider-dot.active').classList.add('bg-white/20');
+            
+            sliderDots[currentSlide].classList.add('active');
+            sliderDots[currentSlide].classList.add('bg-primary');
+            sliderDots[currentSlide].classList.add('scale-125');
+            sliderDots[currentSlide].classList.remove('bg-white/20');
+            
+            // Scroll to the next slide with enhanced smooth scrolling
+            const slideWidth = slider.querySelector('.flex-none').offsetWidth;
+            slider.scrollTo({
+                left: slideWidth * currentSlide,
+                behavior: 'smooth'
+            });
+        }, 5000);
+
+        // Enhanced Form Handling with better feedback
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.getElementById('newsletterForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message with enhanced styling
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-primary text-white p-6 rounded-xl shadow-button z-[9999] animate-fade-in';
+            successMessage.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold">Message Sent!</h3>
+                </div>
+                <p class="mb-4">Thank you for your message, ${name}! We will get back to you soon.</p>
+                <button class="w-full py-2 px-4 bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-300">Close</button>
+            `;
+            document.body.appendChild(successMessage);
+            
+            // Close message on button click
+            successMessage.querySelector('button').addEventListener('click', () => {
+                successMessage.classList.add('animate-fade-out');
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 500);
+            });
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(successMessage)) {
+                    successMessage.classList.add('animate-fade-out');
+                    setTimeout(() => {
+                        if (document.body.contains(successMessage)) {
+                            document.body.removeChild(successMessage);
+                        }
+                    }, 500);
+                }
+            }, 5000);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message with enhanced styling
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-primary text-white p-6 rounded-xl shadow-button z-[9999] animate-fade-in';
+            successMessage.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold">Subscription Successful!</h3>
+                </div>
+                <p class="mb-4">Thank you for subscribing to our newsletter!</p>
+                <button class="w-full py-2 px-4 bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-300">Close</button>
+            `;
+            document.body.appendChild(successMessage);
+            
+            // Close message on button click
+            successMessage.querySelector('button').addEventListener('click', () => {
+                successMessage.classList.add('animate-fade-out');
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 500);
+            });
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(successMessage)) {
+                    successMessage.classList.add('animate-fade-out');
+                    setTimeout(() => {
+                        if (document.body.contains(successMessage)) {
+                            document.body.removeChild(successMessage);
+                        }
+                    }, 500);
+                }
+            }, 5000);
+            
+            // Reset form
+            newsletterForm.reset();
+        });
+        
+        // Enhanced Scroll Indicator with smoother transitions
+        function updateScrollIndicator() {
+            const sections = ['hero', 'features', 'about', 'trainers', 'pricing', 'contact'];
+            const scrollPosition = window.scrollY + window.innerHeight / 3;
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        // Remove active class from all dots with smooth transitions
+                        document.querySelectorAll('.scroll-indicator-dot').forEach(dot => {
+                            dot.classList.remove('active');
+                        });
+                        
+                        // Add active class to current section dot with enhanced effects
+                        const activeDot = document.querySelector(`.scroll-indicator-dot[data-section="${sectionId}"]`);
+                        if (activeDot) {
+                            activeDot.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Enhanced Scroll down button with smoother animation
+        document.getElementById('scroll-down').addEventListener('click', () => {
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = featuresSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // Enhanced Parallax effect for hero section
+        function updateParallax() {
+            const scrollPosition = window.pageYOffset;
+            const heroSection = document.getElementById('hero');
+            
+            if (heroSection) {
+                // Create parallax effect by adjusting background position
+                const yPos = scrollPosition * 0.4;
+                heroSection.style.backgroundPosition = `center ${yPos}px`;
+            }
+        }
+        
+        // Initialize scroll indicator and parallax
+        document.querySelectorAll('.scroll-indicator-dot').forEach(dot => {
+            dot.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize on page load
+        window.addEventListener('load', function() {
+            revealElements();
+            updateScrollIndicator();
+            updateParallax();
+        });
+    </script>
+</body>
+</html>
